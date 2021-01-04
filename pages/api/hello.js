@@ -4,6 +4,14 @@ const window = createSVGWindow()
 const SVG = require('svg.js')(window)
 const document = window.document
 
+function getBase64(url) {
+  return axios
+    .get(url, {
+      responseType: 'arraybuffer'
+    })
+    .then(response => Buffer.from(response.data, 'binary').toString('base64'))
+}
+
 const createContainer = canvas => {
   canvas
     .rect(500, 600)
@@ -14,7 +22,7 @@ const createContainer = canvas => {
 }
 
 export default async (req, res) => {
-  const canvas = SVG(document.documentElement)
+  const canvas = SVG(document.documentElement).size(510, 610)
 
   createContainer(canvas)
 
@@ -24,8 +32,9 @@ export default async (req, res) => {
 
   const avatarContainer = canvas.rect(100, 100).radius(50).move(26, 26)
 
+  const image = await getBase64(avatarUrl);
   canvas
-    .image(avatarUrl)
+    .image(`data:image/jpg;base64,${image}`)
     .size(100, 100)
     .move(26, 26)
     .clipWith(avatarContainer)
