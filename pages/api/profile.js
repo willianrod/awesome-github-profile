@@ -14,7 +14,7 @@ function getBase64(url) {
 
 const createContainer = canvas => {
   canvas
-    .rect(500, 600)
+    .rect(500, 132)
     .fill('#0d1117')
     .move(10, 10)
     .rx(4)
@@ -22,13 +22,35 @@ const createContainer = canvas => {
 }
 
 export default async (req, res) => {
+  const { username } = req.query;
   const canvas = SVG(document.documentElement).size(510, 610)
 
   createContainer(canvas)
 
-  const { data: profileData } = await axios.get('https://api.github.com/users/willianrod')
+  const { data: profileData } = await axios.get(`https://api.github.com/users/${username}`)
 
-  const { avatar_url: avatarUrl } = profileData;
+  const { avatar_url: avatarUrl, name, login } = profileData;
+
+  canvas
+    .text(name)
+    .font({
+      family: 'Helvetica',
+      size: 20,
+      weight: 'bold'
+    })
+    .fill('#ffffff')
+    .move(142, 48)
+
+  canvas
+    .text(`@${login}`)
+    .font({
+      family: 'Helvetica',
+      size: 14,
+      opacity: 0.4,
+    })
+    .fill('#ffffff')
+    .move(142, 73)
+
 
   const avatarContainer = canvas.rect(100, 100).radius(50).move(26, 26)
 
