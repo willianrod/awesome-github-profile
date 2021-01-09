@@ -9,7 +9,7 @@ const window = createSVGWindow()
 const SVG = SvgJS(window)
 const document = window.document
 
-const WIDTH = 778;
+const WIDTH = 854;
 const HEIGHT = 773;
 const MARGIN = 64;
 
