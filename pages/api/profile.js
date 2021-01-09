@@ -9,9 +9,11 @@ const window = createSVGWindow()
 const SVG = SvgJS(window)
 const document = window.document
 
-const WIDTH = 739;
+const WIDTH = 778;
 const HEIGHT = 773;
 const MARGIN = 64;
+
+const STATS_CARD_WIDTH = 100;
 
 const IMAGE_SIZE = 223;
 const DEFAULT_HIGHLIGHT_COLOR = '#0766F5';
@@ -228,7 +230,7 @@ class SVGProfile {
 
   _createGithubStatsCard = ({ label, value }) => {
     const group = this.canvas.group();
-    group.rect(100, 42).fill(this.theme.background).radius(4);
+    group.rect(STATS_CARD_WIDTH, 42).fill(this.theme.background).radius(4);
     group.text(label).font({ size: 16 }).fill(this.theme.textColor).move(3, -5);
     group.text(String(value)).font({ size: 16, weight: 'bold' }).fill(this.highlightColor).move(3, 15);
     return group;
@@ -237,14 +239,16 @@ class SVGProfile {
   _renderGithubStats = ({ repositories, pullRequests, contributionsCollection }) => {
     const totalStars = repositories.nodes.reduce((acc, curr) => acc += curr.stargazers.totalCount, 0);
     const commits = contributionsCollection.totalCommitContributions + contributionsCollection.restrictedContributionsCount;
+    const initialCardLeftOffset = WIDTH - MARGIN - STATS_CARD_WIDTH;
+
     this._createGithubStatsCard({ label: 'Repos', value: repositories.totalCount })
-      .move(483, 590);
-    this._createGithubStatsCard({ label: 'Commits', value: commits })
-      .move(600, 590);
+      .move(initialCardLeftOffset, 590);
     this._createGithubStatsCard({ label: 'Stars', value: totalStars })
-      .move(483, 647);
+      .move(initialCardLeftOffset, 647);
+    this._createGithubStatsCard({ label: 'Commits', value: commits })
+      .move(initialCardLeftOffset - STATS_CARD_WIDTH - 16, 590);
     this._createGithubStatsCard({ label: 'PR\'s', value: pullRequests.totalCount })
-      .move(600, 647);
+      .move(initialCardLeftOffset - STATS_CARD_WIDTH - 16, 647);
   }
 
   render = async () => {
