@@ -62,7 +62,7 @@ PAT=YOUR_GENERATED_PERSONAL_ACCESS_TOKEN
 ### Instalation
 To help with the development with this cool profile image, first you have to get it running locally to start.
 
-So you need to install all project dependêncies, I recommend unsing [yarn](https://classic.yarnpkg.com/en/docs/install). Inside the project directory you need to run the following command:
+So you need to install all project dependêncies, I recomend to use [yarn](https://classic.yarnpkg.com/en/docs/install). Inside the project directory you need to run the following command:
 
 ```bash
 yarn install
