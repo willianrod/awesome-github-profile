@@ -1,0 +1,42 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  max-width: 720px;
+  width: 90%;
+}
+
+.main input {
+  margin-bottom: 16px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.toggleColor {
+  width: 100%;
+  flex-direction: row;
+  align-items: flex-end !important;
+}
+
+.submitButton {
+  margin-top: 16px;
+}
+
+.description {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+}

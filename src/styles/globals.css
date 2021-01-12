@@ -6,6 +6,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.chakra-radio {
+  margin-right: 16px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
