@@ -45,7 +45,12 @@ export default function Home() {
   const onSubmit = useCallback((values) => {
     if (!values) return '';
 
-    const parameters = Object.keys(values)
+    const newValues = {
+      ...values,
+      highlightColor: values.highlightColor?.replace('#', '')
+    };
+
+    const parameters = Object.keys(newValues)
       .map((key) => `${key}=${values[key]}`)
       .join('&');
 

@@ -180,9 +180,11 @@ class SVGProfile {
    * Render a list of the most used programming languages by a given wakatime user
    */
   async _renderRecentActivity() {
-    if (!this.wakatime) return null;
+    if (!this.wakatime) return;
     const { languages } = await requestWakatimeStats(this.wakatime);
     let height = 550;
+
+    if (!languages?.length) return;
 
     this._createdHighlightedText('Recent activity')
       .font({
