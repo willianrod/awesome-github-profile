@@ -13,16 +13,17 @@
     "@chakra-ui/react": "1.1.2",
     "@emotion/react": "11.1.4",
     "@emotion/styled": "11.0.0",
+    "@hookform/resolvers": "^2.8.5",
     "axios": "0.21.1",
-    "final-form": "4.20.1",
     "framer-motion": "3.2.0",
     "next": "10.0.4",
     "prop-types": "15.7.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-final-form": "6.5.2",
+    "react-hook-form": "^7.22.2",
     "svg.js": "2.7.1",
-    "svgdom": "0.1.8"
+    "svgdom": "0.1.8",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "eslint": "7.17.0",

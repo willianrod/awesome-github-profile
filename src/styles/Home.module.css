@@ -34,6 +34,10 @@
   margin-bottom: 16px;
 }
 
+.radio {
+  margin-top: 1.4rem;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
